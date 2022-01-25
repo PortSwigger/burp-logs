@@ -19,7 +19,7 @@ public class LogTableModel extends AbstractTableModel {
 	}
 	
 	@Override
-	public int getColumnCount(){ return 4; } 
+	public int getColumnCount(){ return 6; } 
 	
 	@Override
 	public int getRowCount(){ return messages.size();} 
@@ -32,9 +32,14 @@ public class LogTableModel extends AbstractTableModel {
 			case 1:
 				return messages.get(row).getTimeString();
 			case 2:
-				return messages.get(row).getProtocol()+"://"+messages.get(row).getHost();
+				return messages.get(row).getProtocol()+"://"+messages.get(row).getHost()+":"+messages.get(row).getPort();
 			case 3:
 				return messages.get(row).getHostIP();
+			case 4:
+				return messages.get(row).getUrl();
+			case 5:
+				//return "COMMENTPLACEHOLDER";
+				return messages.get(row).getComment();
 			default:
 				return "";
 		} 
@@ -51,6 +56,10 @@ public class LogTableModel extends AbstractTableModel {
 				return "Host";
 			case 3:
 				return "IP";
+			case 4:
+				return "Url";
+			case 5:
+				return "Comment";
 			default:
 				return "";
 		}
